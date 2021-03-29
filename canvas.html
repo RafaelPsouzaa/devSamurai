@@ -1,0 +1,31 @@
+<html>
+<body>
+    <canvas id="leaf" width="600" height="500"></canvas>
+    <script>
+        var folhaDesenho = document.getElementById("leaf");
+        var areaDesenho = folhaDesenho.getContext("2d");
+        var larguraCampo = 600;
+        var alturaCampo = 500;
+        var larguraLinha = 5;
+        var larguraBola = 5;
+        var larguraRaquet = 50;
+
+        areaDesenho.fillStyle = '#286047';
+        areaDesenho.fillRect(0,0,larguraCampo,500);
+
+        areaDesenho.fillStyle ='#ffffff';
+
+        //Line
+       areaDesenho.fillRect(297.5,0,5,500);
+        //raquet
+        areaDesenho.fillRect(0,198,5,50);
+        //raquet2
+        areaDesenho.fillRect(595,198,5,50);
+        //bola
+
+
+    </script>
+
+</body>
+
+</html>
