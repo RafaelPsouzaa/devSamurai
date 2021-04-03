@@ -2,30 +2,51 @@
 <body>
     <canvas id="leaf" width="600" height="500"></canvas>
     <script>
-        var folhaDesenho = document.getElementById("leaf");
-        var areaDesenho = folhaDesenho.getContext("2d");
-        var larguraCampo = 600;
-        var alturaCampo = 500;
-        var larguraLinha = 5;
-        var larguraBola = 5;
-        var larguraRaquet = 50;
+        window.onload = function(){
+            setInterval(executar,1000 / 30);
+        }
 
-        areaDesenho.fillStyle = '#286047';
-        areaDesenho.fillRect(0,0,larguraCampo,500);
+        var posicaoBolaX = posicaoBolaY =10;
 
-        areaDesenho.fillStyle ='#ffffff';
+        function executar(){
 
-        //Line
-       areaDesenho.fillRect(297.5,0,5,500);
-        //raquet
-        areaDesenho.fillRect(0,198,5,50);
-        //raquet2
-        areaDesenho.fillRect(595,198,5,50);
-        //bola
+            var folhaDesenho = document.getElementById("leaf");
+            var areaDesenho = folhaDesenho.getContext("2d");
+
+            var larguraCampo = 600;
+            var alturaCampo = 500;
+            var espessuraRede = 5;
+            var velocidadeDaBolaPosicaoX = 1;
+            var velocidadeDaBolaPosicaoY = 1;
+            
+            var diametroBola = 10;
+
+            areaDesenho.fillStyle = "#286047";// cor verde
+            //campo
+            areaDesenho.fillRect(0,0,larguraCampo,alturaCampo);
+
+            areaDesenho.fillStyle = '#ffffff';//cor branca
+            //rede
+            areaDesenho.fillRect(larguraCampo/2 - espessuraRede/2,0,espessuraRede,alturaCampo);
+            //bola
+            areaDesenho.fillRect(posicaoBolaX-diametroBola/2,posicaoBolaY-diametroBola/2,diametroBola,diametroBola);
+
+            posicaoBolaX = posicaoBolaX + velocidadeDaBolaPosicaoX;
+            posicaoBolaY = posicaoBolaY + velocidadeDaBolaPosicaoY;
 
 
+            //verifica lateral superior 
+        if(posicaoBolaY < 0 && velocidadeDaBolaPosicaoY < 0) {
+            velocidadeDaBolaPosicaoY = -velocidadeDaBolaPosicaoY;
+        }
+                //verifica lateral inferior
+        if(posicaoBolaY > alturaCampo && velocidadeDaBolaPosicaoY > 0) {
+            velocidadeDaBolaPosicaoY = -velocidadeDaBolaPosicaoY;
+        }
+
+               console.log("tic-tac")
+        }
     </script>
-
 </body>
 
 </html>
